@@ -1,21 +1,27 @@
 import AlertItem from './data/AlertItem';
-import DataItem from './data/DataItem';
-import DataList from './data/DataList';
+import AlertsList from './data/AlertsList';
 import Helsinki from './Helsinki';
-import QueryBtn from './QueryBtn';
+import Modal from './Modal';
 import RouteItem from './data/RouteItem';
+import RoutesList from './data/RoutesList';
 import RoutePath from './RoutePath';
+import SideBar from './SideBar';
+import SideBarBtn from './SideBarBtn';
 import StopNode from './StopNode';
 import TicketTypeItem from './data/TicketTypeItem';
+import TicketTypesList from './data/TicketTypesList';
 
 export {
   AlertItem,
-  DataItem,
-  DataList,
+  AlertsList,
   Helsinki,
-  QueryBtn,
+  Modal,
   RouteItem,
+  RoutesList,
   RoutePath,
+  SideBar,
+  SideBarBtn,
   StopNode,
-  TicketTypeItem
+  TicketTypeItem,
+  TicketTypesList
 };

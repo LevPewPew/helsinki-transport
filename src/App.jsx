@@ -1,83 +1,53 @@
 import React, { useState } from 'react';
-import { gql } from 'apollo-boost';
-import { useQuery } from '@apollo/react-hooks';
-import { AlertItem, DataItem, DataList, QueryBtn, RouteItem, TicketTypeItem } from 'components';
+import { AlertsList, SideBarBtn, Modal, RoutesList, SideBar, TicketTypesList } from 'components';
 import './App.css';
 
-const ALERTS_QUERY = gql`
-  query {
-    alerts {
-      route
-      alertSeverityLevel
-      alertCause
-      alertEffect
-      effectiveStartDate
-      effectiveEndDate
-      alertHeaderText
-      alertDescriptionText
-    }
-  }
-`;
-
-const ROUTES_QUERY = gql`
-  query {
-    routes {
-      shortName
-      longName
-      mode
-      stops
-    }
-  }
-`;
-
-const TICKET_TYPES_QUERY = gql`
-  query {
-    ticketTypes {
-      fareId
-      price
-      currency
-      zones
-    }
-  }
-`;
-
 function App() {
-  const [ gqlRequest, setGqlRequest ] = useState(TICKET_TYPES_QUERY);
-  const { loading, error, data } = useQuery(gqlRequest);
-  const [ dataItemHtml, setDataItemHtml ] = useState(null);
-  
+  const [ isModalDisplayed, setIsModalDisplayed ] = useState(false);
+  // TODO see if start state '' breaks this
+  const [ modalList, setModalList ] = useState('AlertsList');
+  const modalLists = {
+    AlertsList: <AlertsList />,
+    RoutesList: <RoutesList />,
+    TicketTypesList: <TicketTypesList />
+  };
+
+  const displayAlertsModal = () => {
+    setModalList('AlertsList');
+    setIsModalDisplayed(true);
+  };
+
+  const displayRoutesModal = () => {
+    setModalList('RoutesList');
+    setIsModalDisplayed(true);
+  };
+
+  const displayTicketTypesModal = () => {
+    setModalList('TicketTypesList');
+    setIsModalDisplayed(true);
+  };
+
   return (
     <div className="App">
-      <QueryBtn
-        dataShape={AlertItem}
-        gqlRequest={ALERTS_QUERY}
-        setDataItemHtml={setDataItemHtml}
-        setGqlRequest={setGqlRequest}
-        text={"GET alerts"}
+      <SideBar>
+        <SideBarBtn
+          handleClick={displayAlertsModal}
+          text={"Announcements"}
+          />
+        <SideBarBtn
+          handleClick={displayRoutesModal}
+          text={"Routes"}
+          />
+        <SideBarBtn
+          handleClick={displayTicketTypesModal}
+          text={"TicketTypes"}
         />
-      <QueryBtn
-        dataShape={RouteItem}
-        gqlRequest={ROUTES_QUERY}
-        setDataItemHtml={setDataItemHtml}
-        setGqlRequest={setGqlRequest}
-        text={"GET routes"}
-        />
-      <QueryBtn
-        dataShape={TicketTypeItem}
-        gqlRequest={TICKET_TYPES_QUERY}
-        setDataItemHtml={setDataItemHtml}
-        setGqlRequest={setGqlRequest}
-        text={"GET ticketTypes"}
-      />
-      <DataList>
-        {data.map((item) => {
-            return (
-              <DataItem>
-                {dataItemHtml}
-              </DataItem>
-            )
-        })}
-      </DataList>
+      </SideBar>
+      <Modal
+        isDisplayed={isModalDisplayed}
+      >
+        {modalLists[modalList]}
+      </Modal>
     </div>
   );
 }
