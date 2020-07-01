@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertsList, SideBarBtn, Modal, RoutesList, SideBar, TicketTypesList } from 'components';
+import { AlertsList, Helsinki, Modal, RoutesList, SideBar, SideBarBtn, TicketTypesList } from 'components';
 import styled from 'styled-components';
 
 const Root = styled.div`
@@ -45,6 +45,7 @@ function App() {
           text={"TicketTypes"}
         />
       </SideBar>
+      <Helsinki />
       <Modal
         isDisplayed={isModalDisplayed}
       >
