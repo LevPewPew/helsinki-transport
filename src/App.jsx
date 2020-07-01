@@ -1,34 +1,36 @@
 import React, { useState } from 'react';
 import { AlertsList, SideBarBtn, Modal, RoutesList, SideBar, TicketTypesList } from 'components';
-import './App.css';
+import styled from 'styled-components';
+
+const Root = styled.div`
+  width: 1125px;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+`;
 
 function App() {
   const [ isModalDisplayed, setIsModalDisplayed ] = useState(false);
-  // TODO see if start state '' breaks this
-  const [ modalList, setModalList ] = useState('AlertsList');
-  const modalLists = {
-    AlertsList: <AlertsList />,
-    RoutesList: <RoutesList />,
-    TicketTypesList: <TicketTypesList />
-  };
+  const [ modalList, setModalList ] = useState('');
 
   const displayAlertsModal = () => {
-    setModalList('AlertsList');
+    setModalList(<AlertsList />);
     setIsModalDisplayed(true);
   };
 
   const displayRoutesModal = () => {
-    setModalList('RoutesList');
+    setModalList(<RoutesList />);
     setIsModalDisplayed(true);
   };
 
   const displayTicketTypesModal = () => {
-    setModalList('TicketTypesList');
+    setModalList(<TicketTypesList />);
     setIsModalDisplayed(true);
   };
 
   return (
-    <div className="App">
+    <Root>
       <SideBar>
         <SideBarBtn
           handleClick={displayAlertsModal}
@@ -46,9 +48,9 @@ function App() {
       <Modal
         isDisplayed={isModalDisplayed}
       >
-        {modalLists[modalList]}
+        {modalList}
       </Modal>
-    </div>
+    </Root>
   );
 }
 
