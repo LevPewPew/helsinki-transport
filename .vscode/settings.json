@@ -1,5 +1,27 @@
 {
   "editor.rulers": [
     80, 120
-  ]
+  ],
+  "editor.tokenColorCustomizations": {
+    "[Default Dark+]": {
+      "textMateRules": [
+        {
+          "scope": ["variable.other.constant", "variable.other.enummember"],
+          "settings": {
+            "foreground": "#9CDCFE"
+          }
+        }
+      ]
+    },
+    "[Default Light+]": {
+      "textMateRules": [
+        {
+          "scope": ["variable.other.constant", "variable.other.enummember"],
+          "settings": {
+            "foreground": "#001080"
+          }
+        }
+      ]
+    }
+  }
 }

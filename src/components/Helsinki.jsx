@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import 'leaflet/dist/leaflet.css';
 
 const Root = styled(Map)`
-  height: 500px;
-  width: 500px;
+  height: 100%;
+  width: 100%;
 `;
 
 const marker = new Leaflet.Icon({
@@ -20,22 +20,37 @@ const marker = new Leaflet.Icon({
 class Helsinki extends React.Component {
   state = {
     center: [60.192059, 24.945831],
+    markers: [[19.4100819, -99.1630388]],
     zoom: 13,
+  };
+
+  setMarker = (event) => {
+    this.setState({ markers: [event.latlng]} );
   };
 
   render() {
     return (
-      <Root center={this.state.center} zoom={this.state.zoom}>
+      <Root className={this.props.className}
+        center={this.state.center}
+        onClick={this.setMarker}
+        zoom={this.state.zoom}
+      >
         <TileLayer
           attribution={'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
           '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'}
           url={'https://cdn.digitransit.fi/map/v1/hsl-map-256/{z}/{x}/{y}.png'}
         />
-        <Marker icon={marker} position={this.state.center}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
+        {this.state.markers.map((position, i) => (
+          <Marker
+            icon={marker}
+            key={`marker-${i}`}
+            position={position}>
+            <Popup>
+              <span>Popup!!!</span>
+            </Popup>
+          </Marker>
+        ))}
+        {this.props.children}
       </Root>
     );
   }
