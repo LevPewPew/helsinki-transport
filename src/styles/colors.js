@@ -5,8 +5,7 @@ const COLORS = {
   POP: 'whitesmoke',
   SELECTED: 'white',
   SELECTED_DETAILS: 'gray',
-  TEXT_HOVER: 'black',
-  TEXT_PRIMARY: 'lightgray',
+  TEXT_PRIMARY: 'black',
   TEXT_SECONDARY: 'white',
   TEXT_SELECTED: 'gray'
 };

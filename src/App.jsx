@@ -5,78 +5,73 @@ import { MdAnnouncement } from 'react-icons/md';
 import styled from 'styled-components';
 import { COLORS } from 'styles';
 
-const Root = styled.div`
-  width: 100%;
-  height: 100%;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: ${COLORS.MAIN};
-  
-  main {
-    width: 100%;
-    display: flex;
-    flex-grow: 2;
-  }
-`;
-
-const StyledFooter = styled(Footer)`
-  margin: 20px;
-`;
-
-// const StyledHelsinki = styled(Helsinki)`
-//   .abs-pos-center-helper {
-//     top: 0;
-//     width: 100%;
-//     position: relative;
-//     z-index: 1000;
-//     display: flex;
-//     justify-content: center;
-//   }
-// `;
-
-// const StyledHeader = styled(Header)`
-//   justify-content: center;
-// `;
-
-const StyledHelsinki = styled(Helsinki)`
-  .abs-pos-center-helper {
-    top: 0;
-    width: 100%;
-    position: relative;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-  }
-`;
-
-const StyledHeader = styled(Header)`
-  top: 0;
-  width: 100%;
-  position: relative;
-  z-index: 1000;
-  display: flex;
-  justify-content: center;
-`;
-
 function App() {
-  const [ isModalDisplayed, setIsModalDisplayed ] = useState(false);
+  const [ modalDisplayed, setModalDisplayed ] = useState(false);
   const [ modalList, setModalList ] = useState('');
+
+  const Root = styled.div`
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: ${COLORS.MAIN};
+
+    main {
+      width: 100%;
+      display: flex;
+      flex-grow: 2;
+      position: relative;
+
+      .map-modal-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  `;
+
+  const HelsinkiSC = styled(Helsinki)`
+    position: relative;
+  `;
+
+  const FooterSC = styled(Footer)`
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+  `;
+
+  const HeaderSC = styled(Header)`
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  `;
+
+  const ModalSC = styled(Modal)`
+    z-index: 2000;
+    font-size: 24px;
+  `;
 
   const displayAlertsModal = () => {
     setModalList(<AlertsList />);
-    setIsModalDisplayed(true);
+    setModalDisplayed(true);
   };
 
   const displayRoutesModal = () => {
     setModalList(<RoutesList />);
-    setIsModalDisplayed(true);
+    setModalDisplayed(true);
   };
 
   const displayTicketTypesModal = () => {
     setModalList(<TicketTypesList />);
-    setIsModalDisplayed(true);
+    setModalDisplayed(true);
   };
 
   return (
@@ -99,18 +94,18 @@ function App() {
             text={"TicketTypes"}
           />
         </SideBar>
-        <StyledHelsinki>
-          <div className="abs-pos-center-helper">
-            <StyledHeader />
-          </div>
-        </StyledHelsinki>
-        <Modal
-          isDisplayed={isModalDisplayed}
-        >
-          {modalList}
-        </Modal>
+        <div className="map-modal-container">
+          <HelsinkiSC>
+            <HeaderSC />
+            <FooterSC />
+          </HelsinkiSC>
+          <ModalSC
+            isDisplayed={modalDisplayed}
+          >
+            {modalList}
+          </ModalSC>
+        </div>
       </main>
-      <StyledFooter />
     </Root>
   );
 }

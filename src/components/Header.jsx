@@ -9,22 +9,22 @@ const Root = styled.header`
 
   a {
     text-decoration: none;
-    color: ${COLORS.TEXT_HOVER};
-    opacity: 50%;
-
+    opacity: 20%;
+    
     h1 {
       font-size: 48px;
+      color: ${COLORS.TEXT_PRIMARY};
     }
 
     &:hover {
-      color: ${COLORS.TEXT_HOVER};
+      color: ${COLORS.TEXT_PRIMARY};
       opacity: 100%;
     }
   }
 `;
 
-const Header = () => (
-  <Root>
+const Header = ({className}) => (
+  <Root className={className}>
     <a href="https://digitransit.fi/en/developers/">
       <h1>Helsinki Transport</h1>
     </a>

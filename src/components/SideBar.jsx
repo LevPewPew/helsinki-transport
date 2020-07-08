@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from 'styled-components';
+import { COLORS } from 'styles';
 
 const Root = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: ${COLORS.BUTTON_SECONDARY};
 `;
 
-const SideBar = ({children}) => (
-  <Root>
+const SideBar = ({children, className}) => (
+  <Root className={className}>
     {children}
   </Root>
 );

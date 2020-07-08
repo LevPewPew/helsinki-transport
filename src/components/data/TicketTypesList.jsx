@@ -5,6 +5,8 @@ import { TicketTypeItem } from 'components';
 import styled from 'styled-components';
 
 const Root = styled.ul`
+  height: 100%;
+  overflow-y: scroll;
   padding-inline-start: 0px;
   list-style-type: none;
 `;

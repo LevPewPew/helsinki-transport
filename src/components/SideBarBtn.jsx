@@ -7,7 +7,8 @@ const Root = styled.button`
   border: none;
   display: flex;
   align-items: center;
-  background-color: ${COLORS.POP};
+  background-color: ${COLORS.BUTTON_SECONDARY};
+  cursor: pointer;
 
   &:focus {
     outline: 0;
