@@ -20,7 +20,7 @@ const marker = new Leaflet.Icon({
 class Helsinki extends React.Component {
   state = {
     center: [60.192059, 24.945831],
-    markers: [[19.4100819, -99.1630388]],
+    markers: [],
     zoom: 13,
   };
 

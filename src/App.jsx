@@ -1,13 +1,24 @@
 import React, { useState } from 'react';
+import { useApolloClient } from "@apollo/react-hooks";
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 import { AlertsList, Footer, Header, Helsinki, Modal, RoutesList, SideBar, SideBarBtn, TicketTypesList } from 'components';
 import { FaRoute, FaTicketAlt } from 'react-icons/fa';
 import { MdAnnouncement } from 'react-icons/md';
 import styled from 'styled-components';
 import { COLORS } from 'styles';
 
+const IS_LOGGED_IN = gql`
+  query IsUserLoggedIn {
+    isLoggedIn @client
+  }
+`;
+
 function App() {
   const [ modalDisplayed, setModalDisplayed ] = useState(false);
   const [ modalList, setModalList ] = useState('');
+  const client = useApolloClient();
+  const { data } = useQuery(IS_LOGGED_IN);
 
   const Root = styled.div`
     width: 100%;
@@ -76,6 +87,8 @@ function App() {
 
   return (
     <Root>
+      <div onClick={() => client.writeData({ data: { isLoggedIn: !data.isLoggedIn } })}>BUTTON</div>
+      <div>!{data.isLoggedIn ? "IN": "OUT"}!</div>
       <main>
         <SideBar>
           <SideBarBtn

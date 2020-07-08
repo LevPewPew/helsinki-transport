@@ -4,10 +4,25 @@ import './index.scss';
 import App from './App.jsx';
 import * as serviceWorker from './serviceWorker';
 import ApolloClient from 'apollo-boost';
+import { InMemoryCache } from 'apollo-cache-inmemory';
 import { ApolloProvider } from '@apollo/react-hooks';
+import { resolvers, typeDefs } from './graphql/resolvers';
+
+const GRAPHQL_API_URL = 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql';
+
+const cache = new InMemoryCache();
 
 const client = new ApolloClient({
-  uri: 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql',
+  cache,
+  uri: GRAPHQL_API_URL,
+  typeDefs,
+  resolvers
+});
+
+cache.writeData({
+  data: {
+    isLoggedIn: false
+  }
 });
 
 ReactDOM.render(
