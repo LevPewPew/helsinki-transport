@@ -4,13 +4,6 @@ import { useQuery } from '@apollo/react-hooks';
 import { AlertItem } from 'components';
 import styled from 'styled-components';
 
-const Root = styled.ul`
-  height: 100%;
-  overflow-y: scroll;
-  padding-inline-start: 0px;
-  list-style-type: none;
-`;
-
 const ALERTS_QUERY = gql`
   query {
     alerts {
@@ -31,6 +24,13 @@ const ALERTS_QUERY = gql`
 
 function AlertsList() {
   const { loading, error, data } = useQuery(ALERTS_QUERY);
+
+  const Root = styled.ul`
+    height: 100%;
+    overflow-y: scroll;
+    padding-inline-start: 0px;
+    list-style-type: none;
+  `;
 
   return (
     <Root>
