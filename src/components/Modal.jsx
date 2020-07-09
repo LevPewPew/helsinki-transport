@@ -2,23 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles';
 
-const Modal = (props) => {
-  const { children, className, isDisplayed } = props;
+const Root = styled.div`
+  width: 80vh;
+  height: 80vh;
+  position: absolute;
+  border: 1px solid grey;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  background-color: ${COLORS.MAIN};
+`;
 
-  const Root = styled.div`
-    width: 80vh;
-    height: 80vh;
-    position: absolute;
-    border: 1px solid grey;
-    border-radius: 5px;
-    background-color: ${COLORS.MAIN};
-  `;
-
-  return (
-    <Root className={className} style={{display: isDisplayed ? 'initial' : 'none'}}>
-      {children}
-    </Root>
-  )
-};
+const Modal = ({ children, className, displayed, setDisplayed }) => (
+  <Root className={className} style={{display: displayed ? 'flex' : 'none'}}>
+    <button onClick={() => setDisplayed(false)}>X</button>
+    {children}
+  </Root>
+);
 
 export default Modal;

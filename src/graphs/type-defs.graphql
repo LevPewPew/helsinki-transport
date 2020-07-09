@@ -1,0 +1,13 @@
+type Query {
+  markers: [Marker]
+}
+
+type Query {
+  isLoggedIn: Boolean!
+}
+
+type Marker {
+  lat: Number,
+  lng: Number,
+  icon: String
+}
