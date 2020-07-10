@@ -12,14 +12,14 @@ const Root = styled.ul`
 `;
 
 function AlertsList() {
-  const { loading, error, data } = useQuery(queries.getAlerts);
+  const { loading, error, data } = useQuery(queries.getAllAlerts);
 
   return (
     <Root>
       {data?.alerts.map((item, i) => (
         <AlertItem
           item={item}
-          key={i}
+          key={`AlertItem${i}`}
         />
       ))}
     </Root>

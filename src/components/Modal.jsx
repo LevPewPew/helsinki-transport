@@ -14,8 +14,11 @@ const Root = styled.div`
 `;
 
 const Modal = ({ children, className, displayed, setDisplayed }) => (
-  <Root className={className} style={{display: displayed ? 'flex' : 'none'}}>
-    <button onClick={() => setDisplayed(false)}>X</button>
+  <Root
+    className={className}
+    style={{display: displayed ? 'flex' : 'none'}}
+  >
+    <button type="button" onClick={() => setDisplayed(false)}>X</button>
     {children}
   </Root>
 );

@@ -60,7 +60,7 @@ const ModalSC = styled(Modal)`
 function App() {
   const [ modalDisplayed, setModalDisplayed ] = useState(false);
   const [ modalList, setModalList ] = useState('');
-  const { data } = useQuery(queries.getRouteMarkers);
+  const { data } = useQuery(queries.getAllRouteMarkers);
 
   const displayAlertsModal = () => {
     setModalList(<AlertsList />);
@@ -94,19 +94,19 @@ function App() {
           <SideBarBtn
             handleClick={displayAlertsModal}
             icon={<MdAnnouncement />}
-            key={'sidebar-1'}
+            key={'SideBarBtn-1'}
             text={"Announcements"}
             />
           <SideBarBtn
             handleClick={displayRoutesModal}
             icon={<FaRoute />}
-            key={'sidebar-2'}
+            key={'SideBarBtn-2'}
             text={"Routes"}
             />
           <SideBarBtn
             handleClick={displayTicketTypesModal}
             icon={<FaTicketAlt />}
-            key={'sidebar-3'}
+            key={'SideBarBtn-3'}
             text={"TicketTypes"}
           />
         </SideBar>

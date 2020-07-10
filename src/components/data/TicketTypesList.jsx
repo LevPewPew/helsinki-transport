@@ -12,14 +12,14 @@ const Root = styled.ul`
 `;
 
 function TicketTypesList() {
-  const { loading, error, data } = useQuery(queries.getTicketTypes);
+  const { loading, error, data } = useQuery(queries.getAllTicketTypes);
 
   return (
     <Root>
       {data?.ticketTypes.map((item, i) => (
         <TicketTypeItem
           item={item}
-          key={i}
+          key={`TicketTypeItem${i}`}
         />
       ))}
     </Root>

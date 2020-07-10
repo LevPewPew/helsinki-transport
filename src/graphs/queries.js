@@ -1,6 +1,6 @@
 import { gql } from 'apollo-boost';
 
-const getAlerts = gql`
+const getAllAlerts = gql`
   query {
     alerts {
       route {
@@ -18,7 +18,7 @@ const getAlerts = gql`
   }
 `;
 
-const getRouteMarkers = gql`
+const getAllRouteMarkers = gql`
   query {
     routeMarkers @client {
       lat,
@@ -28,7 +28,7 @@ const getRouteMarkers = gql`
   }
 `;
 
-const getRoutes = gql`
+const getAllRoutes = gql`
   query {
     routes {
       shortName
@@ -41,7 +41,7 @@ const getRoutes = gql`
   }
 `;
 
-const getTicketTypes = gql`
+const getAllTicketTypes = gql`
   query {
     ticketTypes {
       fareId
@@ -52,10 +52,9 @@ const getTicketTypes = gql`
   }
 `;
 
-// TODO change these to getAlerts, getRoutes, etc
 export {
-  getAlerts,
-  getRouteMarkers,
-  getRoutes,
-  getTicketTypes
+  getAllAlerts,
+  getAllRouteMarkers,
+  getAllRoutes,
+  getAllTicketTypes
 };

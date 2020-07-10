@@ -6,6 +6,8 @@ import Helsinki from './Helsinki';
 import Modal from './Modal';
 import RouteItem from './data/RouteItem';
 import RoutesList from './data/RoutesList';
+import StopItem from './data/StopItem';
+import StopsList from './data/StopsList';
 import SideBar from './SideBar';
 import SideBarBtn from './SideBarBtn';
 import TicketTypeItem from './data/TicketTypeItem';
@@ -20,6 +22,8 @@ export {
   Modal,
   RouteItem,
   RoutesList,
+  StopItem,
+  StopsList,
   SideBar,
   SideBarBtn,
   TicketTypeItem,

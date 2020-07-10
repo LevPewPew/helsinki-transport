@@ -12,14 +12,14 @@ const Root = styled.ul`
 `;
 
 function RoutesList() {
-  const { loading, error, data } = useQuery(queries.getRoutes);
+  const { loading, error, data } = useQuery(queries.getAllRoutes);
 
   return (
     <Root>
       {data?.routes.map((item, i) => (
         <RouteItem
           item={item}
-          key={i}
+          key={`RouteItem${i}`}
         />
       ))}
     </Root>
