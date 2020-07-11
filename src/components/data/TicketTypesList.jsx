@@ -14,6 +14,8 @@ const Root = styled.ul`
 function TicketTypesList() {
   const { loading, error, data } = useQuery(queries.getAllTicketTypes);
 
+  if (loading) return <div>Loading data...</div>;
+  if (error) return <div>Query Error: {error}</div>;
   return (
     <Root>
       {data?.ticketTypes.map((item, i) => (

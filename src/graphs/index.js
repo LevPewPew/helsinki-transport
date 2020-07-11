@@ -4,14 +4,18 @@ import {
   getAllAlerts,
   getAllRouteMarkers,
   getAllRoutes,
-  getAllTicketTypes
+  getAllTicketTypes,
+  getModalDisplayed,
+  getStops
 } from './queries';
 
 const queries = {
   getAllAlerts,
   getAllRouteMarkers,
   getAllRoutes,
-  getAllTicketTypes
+  getAllTicketTypes,
+  getModalDisplayed,
+  getStops
 };
 
 export {

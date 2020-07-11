@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useApolloClient, useQuery } from '@apollo/react-hooks';
 import { AlertsList, Footer, Header, Helsinki, Modal, RoutesList, SideBar, SideBarBtn, TicketTypesList } from 'components';
 import { FaRoute, FaTicketAlt } from 'react-icons/fa';
 import { MdAnnouncement } from 'react-icons/md';
@@ -57,24 +57,27 @@ const ModalSC = styled(Modal)`
   font-size: 24px;
 `;
 
+// NOTE on latitude and longitude:
+// leaflet map package uses "lat","lng",
+// but HSL graphql schema uses "lat", "lon"
 function App() {
-  const [ modalDisplayed, setModalDisplayed ] = useState(false);
   const [ modalList, setModalList ] = useState('');
+  const client = useApolloClient();
   const { data } = useQuery(queries.getAllRouteMarkers);
 
   const displayAlertsModal = () => {
     setModalList(<AlertsList />);
-    setModalDisplayed(true);
+    client.writeData({ data: { modalDisplayed: true } })
   };
 
   const displayRoutesModal = () => {
     setModalList(<RoutesList />);
-    setModalDisplayed(true);
+    client.writeData({ data: { modalDisplayed: true } })
   };
 
   const displayTicketTypesModal = () => {
     setModalList(<TicketTypesList />);
-    setModalDisplayed(true);
+    client.writeData({ data: { modalDisplayed: true } })
   };
 
   return (
@@ -85,10 +88,10 @@ function App() {
       <div>#{data.markers[0].icon}#</div> */}
 
       {/* somehow the cache is updating...! wtF?! */}
-      <div onClick={() => console.log(data)}>BUTTON</div>
+      {/* <div onClick={() => console.log(data)}>BUTTON</div>
       {
         data.routeMarkers.map((marker) => <div>{marker.lat}</div>)
-      }
+      } */}
       <main>
         <SideBar>
           <SideBarBtn
@@ -117,10 +120,7 @@ function App() {
             <HeaderSC />
             <FooterSC />
           </HelsinkiSC>
-          <ModalSC
-            displayed={modalDisplayed}
-            setDisplayed={setModalDisplayed}
-          >
+          <ModalSC>
             {modalList}
           </ModalSC>
         </div>

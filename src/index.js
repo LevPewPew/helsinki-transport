@@ -21,6 +21,7 @@ const client = new ApolloClient({
 
 cache.writeData({
   data: {
+    modalDisplayed: false,
     routeMarkers: []
   }
 });

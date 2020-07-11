@@ -1,13 +1,14 @@
-type Query {
-  markers: [Marker]
-}
-
-type Query {
-  isLoggedIn: Boolean!
-}
-
 type Marker {
   lat: Number,
-  lng: Number,
-  icon: String
+  lng: Number
 }
+
+type Query {
+  routeMarkers: [Marker]
+}
+
+type Query {
+  modalDisplayed: Boolean!
+}
+# TODO pretty sure since i am using direct writes that everything
+# in here doesn't actually do anything. lol dumb tutorial....

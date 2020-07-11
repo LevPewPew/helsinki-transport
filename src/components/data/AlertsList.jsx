@@ -14,9 +14,11 @@ const Root = styled.ul`
 function AlertsList() {
   const { loading, error, data } = useQuery(queries.getAllAlerts);
 
+  if (loading) return <div>Loading data...</div>;
+  if (error) return <div>Query Error: {error}</div>;
   return (
     <Root>
-      {data?.alerts.map((item, i) => (
+      {data.alerts.map((item, i) => (
         <AlertItem
           item={item}
           key={`AlertItem${i}`}

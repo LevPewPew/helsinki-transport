@@ -1,5 +1,7 @@
 import React from 'react';
+import { useLazyQuery } from '@apollo/react-hooks';
 import { StopsList } from 'components';
+import { queries } from 'graphs';
 import { FaChevronDown } from 'react-icons/fa';
 import styled from 'styled-components';
 
@@ -62,21 +64,32 @@ const Root = styled.li`
   }
 `;
 
-const RouteItem = ({ item }) => (
-  <Root>
-    <details>
-      <summary className="g">
-        <p className="g1">{item.shortName}</p>
-        <p className="g2">{item.longName}</p>
-        <p className="g3">{item.mode}</p>
-        <button className="g4" type="button">View Journey</button>
-        <p className="icon g5"><FaChevronDown /></p>
-      </summary>
-        <StopsList
-          stops={item.stops}
-        />
-    </details>
-  </Root>
-);
+function RouteItem({ item }) {
+  const [ lazyGetStops, { loading, error, data } ] = useLazyQuery(queries.getStops);
+
+  const viewJourney = () => {
+    // const stopIds = item.stops.map((stop) => stop.gtfsId);
+    // lazyGetStops({ variables: { ids: stopIds }});
+    // setDisplayed(false);
+  };
+
+  return (
+    <Root>
+      <details>
+        <summary className="g">
+          <p className="g1">{item.shortName}</p>
+          <p className="g2">{item.longName}</p>
+          <p className="g3">{item.mode}</p>
+          <button className="g4" type="button" onClick={() => viewJourney()}>View Journey</button>
+          <p className="icon g5"><FaChevronDown /></p>
+        </summary>
+          <StopsList
+            stops={item.stops}
+          />
+      </details>
+      <div></div>
+    </Root>
+  );
+};
 
 export default RouteItem;

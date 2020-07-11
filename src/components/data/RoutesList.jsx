@@ -14,6 +14,8 @@ const Root = styled.ul`
 function RoutesList() {
   const { loading, error, data } = useQuery(queries.getAllRoutes);
 
+  if (loading) return <div>Loading data...</div>;
+  if (error) return <div>Query Error: {error}</div>;
   return (
     <Root>
       {data?.routes.map((item, i) => (

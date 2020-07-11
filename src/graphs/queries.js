@@ -22,8 +22,7 @@ const getAllRouteMarkers = gql`
   query {
     routeMarkers @client {
       lat,
-      lng,
-      icon
+      lng
     }
   }
 `;
@@ -35,6 +34,7 @@ const getAllRoutes = gql`
       longName
       mode
       stops {
+        gtfsId
         name
       }
     }
@@ -52,9 +52,28 @@ const getAllTicketTypes = gql`
   }
 `;
 
+const getModalDisplayed = gql`
+  query {
+    modalDisplayed @client
+  }
+`;
+
+const getStops = gql`
+  query Stop($ids: [String]) {
+    stops(ids: $ids) {
+      gtfsId
+      name
+      lat
+      lon
+    }
+  }
+`;
+
 export {
   getAllAlerts,
   getAllRouteMarkers,
   getAllRoutes,
-  getAllTicketTypes
+  getAllTicketTypes,
+  getModalDisplayed,
+  getStops
 };

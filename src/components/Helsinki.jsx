@@ -10,13 +10,29 @@ const Root = styled(Map)`
 `;
 
 const redPushpinIcon = new Leaflet.Icon({
-  iconUrl: 'https://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png' ,
+  iconUrl: 'https://maps.google.com/mapfiles/kml/pushpin/red-pushpin.png',
   iconSize: [64, 64],
   iconAnchor: [20, 62]
 });
 
-// must be a Class component, react-leaflet refuses to work as a functional
-// component. i don't know why.
+const bluePushpinIcon = new Leaflet.Icon({
+  iconUrl: 'https://maps.google.com/mapfiles/kml/pushpin/blue-pushpin.png',
+  iconSize: [64, 64],
+  iconAnchor: [20, 62]
+});
+
+const purplePushpinIcon = new Leaflet.Icon({
+  iconUrl: 'https://maps.google.com/mapfiles/kml/pushpin/purple-pushpin.png',
+  iconSize: [64, 64],
+  iconAnchor: [20, 62]
+});
+
+// NOTE: must be a Class component,
+// react-leaflet refuses to work as a functional component. i don't know why.
+//
+// NOTE: for latitude and longitude,
+// leaflet map package uses "lat","lng",
+// but HSL graphql schema uses "lat", "lon"
 class Helsinki extends React.Component {
   // the Map component from react-leaflet seems to constantly unmount and
   // remount, losing it's state... so as a work around, we get the state from
@@ -32,8 +48,7 @@ class Helsinki extends React.Component {
     const marker = {
       __typename: "Marker",
       lat: event.latlng.lat,
-      lng: event.latlng.lng,
-      icon: redPushpinIcon
+      lng: event.latlng.lng
     }
     const newUserMarkers = this.state.userMarkers;
     newUserMarkers.push(marker);
@@ -55,7 +70,7 @@ class Helsinki extends React.Component {
         />
         {this.state.userMarkers.map((marker, i) => (
           <Marker
-            icon={marker.icon}
+            icon={redPushpinIcon}
             key={`marker-${i}`}
             position={[marker.lat, marker.lng]}>
             <Popup>
@@ -63,6 +78,16 @@ class Helsinki extends React.Component {
             </Popup>
           </Marker>
         ))}
+        {/* {this.state.routeMarkers.map((marker, i) => (
+          <Marker
+            icon={marker.icon}
+            key={`marker-${i}`}
+            position={[marker.lat + 0.000251, marker.lng + 0.000251]}>
+            <Popup>
+              <span>Popup!!! move this so it starts at better spot on the pin graphic</span>
+            </Popup>
+          </Marker>
+        ))} */}
         {this.props.children}
       </Root>
     );
