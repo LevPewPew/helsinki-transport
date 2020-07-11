@@ -6,9 +6,6 @@ import styled from 'styled-components';
 const Root = styled.li`
   details {
     summary {
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
       cursor: pointer;
 
       &::-webkit-details-marker {
@@ -19,24 +16,47 @@ const Root = styled.li`
         outline: 0;
       }
 
-      .flex-section-1 {
-        display: flex;
-
-        p {
-          width: 80%;
-          text-overflow: ellipsis;
-          white-space: nowrap;
-          overflow: hidden;
-          font-weight: bold;
-        }
-
-        button {
-          width: 20%;
-        }
+      p {
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        font-weight: bold;
       }
 
       .icon {
         text-align: center;
+      }
+
+    }
+
+    .g {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      grid-template-columns: 1fr 4fr 1fr 1fr;
+
+      .g1 {
+        grid-row: 1 / 2;
+        grid-column: 1 / 2;
+      }
+
+      .g2 {
+        grid-row: 1 / 2;
+        grid-column: 2 / 3;
+      }
+
+      .g3 {
+        grid-row: 1 / 2;
+        grid-column: 3 / 4;
+      }
+
+      .g4 {
+        grid-row: 1 / 2;
+        grid-column: 4 / 5;
+      }
+
+      .g5 {
+        grid-row: 2 / 3;
+        grid-column: 1 / 5;
       }
     }
   }
@@ -45,12 +65,12 @@ const Root = styled.li`
 const RouteItem = ({ item }) => (
   <Root>
     <details>
-      <summary>
-        <div className="flex-section-1">
-          <button type="button">View Journey</button>
-          <p>{item.shortName}, {item.longName} - {item.mode}</p>
-        </div>
-        <p className="icon"><FaChevronDown /></p>
+      <summary className="g">
+        <p className="g1">{item.shortName}</p>
+        <p className="g2">{item.longName}</p>
+        <p className="g3">{item.mode}</p>
+        <button className="g4" type="button">View Journey</button>
+        <p className="icon g5"><FaChevronDown /></p>
       </summary>
         <StopsList
           stops={item.stops}
@@ -59,5 +79,4 @@ const RouteItem = ({ item }) => (
   </Root>
 );
 
-{/* <button type="button"></button> */}
 export default RouteItem;
