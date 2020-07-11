@@ -6,8 +6,11 @@ import styled from 'styled-components';
 const Root = styled.li`
   details {
     summary {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
       cursor: pointer;
-      
+
       &::-webkit-details-marker {
         display: none;
       }
@@ -16,8 +19,20 @@ const Root = styled.li`
         outline: 0;
       }
 
-      p {
-        font-weight: bold;
+      .flex-section-1 {
+        display: flex;
+
+        p {
+          width: 80%;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow: hidden;
+          font-weight: bold;
+        }
+
+        button {
+          width: 20%;
+        }
       }
 
       .icon {
@@ -31,8 +46,11 @@ const RouteItem = ({ item }) => (
   <Root>
     <details>
       <summary>
-        <p>{item.shortName}, {item.longName} - {item.mode}</p>
-        <p span className="icon"><FaChevronDown /></p>
+        <div className="flex-section-1">
+          <button type="button">View Journey</button>
+          <p>{item.shortName}, {item.longName} - {item.mode}</p>
+        </div>
+        <p className="icon"><FaChevronDown /></p>
       </summary>
         <StopsList
           stops={item.stops}

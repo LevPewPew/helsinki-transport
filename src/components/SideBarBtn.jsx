@@ -6,6 +6,7 @@ const Root = styled.button`
   padding: 20px;
   border: none;
   display: flex;
+  position: relative;
   align-items: center;
   background-color: ${COLORS.BUTTON_SECONDARY};
   cursor: pointer;
