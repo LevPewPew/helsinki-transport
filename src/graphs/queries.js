@@ -61,10 +61,9 @@ const getModalDisplayed = gql`
 const getStops = gql`
   query Stop($ids: [String]) {
     stops(ids: $ids) {
-      gtfsId
-      name
       lat
       lon
+      code
     }
   }
 `;

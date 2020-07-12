@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useApolloClient, useQuery } from '@apollo/react-hooks';
 import { AlertsList, Footer, Header, Helsinki, Modal, RoutesList, SideBar, SideBarBtn, TicketTypesList } from 'components';
 import { FaRoute, FaTicketAlt } from 'react-icons/fa';
@@ -82,16 +82,6 @@ function App() {
 
   return (
     <Root>
-      {/* <div onClick={() => client.writeData({ data: { markers: [marker] } })}>BUTTON</div>
-      <div>#{data.markers[0].lat}#</div>
-      <div>#{data.markers[0].lng}#</div>
-      <div>#{data.markers[0].icon}#</div> */}
-
-      {/* somehow the cache is updating...! wtF?! */}
-      {/* <div onClick={() => console.log(data)}>BUTTON</div>
-      {
-        data.routeMarkers.map((marker) => <div>{marker.lat}</div>)
-      } */}
       <main>
         <SideBar>
           <SideBarBtn
@@ -99,13 +89,13 @@ function App() {
             icon={<MdAnnouncement />}
             key={'SideBarBtn-1'}
             text={"Announcements"}
-            />
+          />
           <SideBarBtn
             handleClick={displayRoutesModal}
             icon={<FaRoute />}
             key={'SideBarBtn-2'}
             text={"Routes"}
-            />
+          />
           <SideBarBtn
             handleClick={displayTicketTypesModal}
             icon={<FaTicketAlt />}

@@ -1,9 +1,10 @@
 import React from 'react';
-import { useLazyQuery } from '@apollo/react-hooks';
+import { useApolloClient, useLazyQuery } from '@apollo/react-hooks';
 import { StopsList } from 'components';
 import { queries } from 'graphs';
 import { FaChevronDown } from 'react-icons/fa';
 import styled from 'styled-components';
+import { useEffect } from 'react';
 
 const Root = styled.li`
   details {
@@ -65,13 +66,25 @@ const Root = styled.li`
 `;
 
 function RouteItem({ item }) {
+  const client = useApolloClient();
   const [ lazyGetStops, { loading, error, data } ] = useLazyQuery(queries.getStops);
 
   const viewJourney = () => {
-    // const stopIds = item.stops.map((stop) => stop.gtfsId);
-    // lazyGetStops({ variables: { ids: stopIds }});
-    // setDisplayed(false);
+    const stopIds = item.stops.map((stop) => stop.gtfsId);
+    lazyGetStops({ variables: { ids: stopIds }});
   };
+
+  useEffect(() => {
+    if (data) {
+      const newRouteMarkers = data.stops.map((stop) => ({
+        __typename: "Marker",
+        lat: stop.lat,
+        lng: stop.lon
+      }));
+      client.writeData({ data: { routeMarkers: newRouteMarkers } });
+      client.writeData({ data: { modalDisplayed: false } });
+    }
+  }, [data]);
 
   return (
     <Root>
