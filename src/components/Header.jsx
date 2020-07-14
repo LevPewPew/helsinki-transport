@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS } from 'styles';
+import { COLORS, FONT_SIZES } from 'styles';
 
 const Root = styled.header`
   display: flex;
@@ -12,7 +12,7 @@ const Root = styled.header`
     opacity: 20%;
     
     h1 {
-      font-size: 48px;
+      font-size: ${FONT_SIZES.MONSTER};
       color: ${COLORS.TEXT_PRIMARY};
     }
 

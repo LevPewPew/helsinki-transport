@@ -10,4 +10,6 @@ const COLORS = {
   TEXT_SELECTED: 'gray'
 };
 
-export default COLORS;
+export {
+  COLORS
+};

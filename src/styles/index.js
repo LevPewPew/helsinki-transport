@@ -1,5 +1,7 @@
-import COLORS from './colors';
+import { COLORS } from './colors';
+import { FONT_SIZES } from './fonts';
 
 export {
-  COLORS
+  COLORS,
+  FONT_SIZES
 };

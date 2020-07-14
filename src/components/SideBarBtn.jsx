@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS } from 'styles';
+import { COLORS, FONT_SIZES } from 'styles';
   
 const Root = styled.button`
-  padding: 20px;
+  padding: 1.25rem;
   border: none;
   display: flex;
   position: relative;
@@ -18,12 +18,12 @@ const Root = styled.button`
   span {
     display: flex;
     align-items: center;
-    font-size: 24px;
+    font-size: ${FONT_SIZES.X_LARGE};
   }
 
   .icon {
-    margin-left: 20px;
-    font-size: 24px;
+    margin-left: 1.0rem;
+    font-size: ${FONT_SIZES.X_LARGE};
   }
 `;
 

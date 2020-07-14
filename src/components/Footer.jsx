@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS } from 'styles';
+import { COLORS, FONT_SIZES } from 'styles';
 
 const Root = styled.div`
   padding-left: 10px;
@@ -13,7 +13,7 @@ const Root = styled.div`
     opacity: 20%;
     
     span {
-      font-size: 24px;
+      font-size: ${FONT_SIZES.XX_LARGE};
       color: ${COLORS.TEXT_PRIMARY};
     }
 
