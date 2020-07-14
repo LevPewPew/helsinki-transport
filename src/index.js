@@ -11,7 +11,6 @@ import { resolvers, typeDefs } from 'graphs';
 const GRAPHQL_API_URL = 'https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql';
 
 const cache = new InMemoryCache();
-
 const client = new ApolloClient({
   cache,
   uri: GRAPHQL_API_URL,
@@ -22,7 +21,7 @@ const client = new ApolloClient({
 cache.writeData({
   data: {
     modalDisplayed: false,
-    routeMarkers: []
+    routeStops: []
   }
 });
 

@@ -6,13 +6,31 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${COLORS.BUTTON_SECONDARY};
+
+  .list-container {
+    flex-grow: 1;
+    position: relative;
+    overflow-y: hidden;
+
+    ul {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: scroll;
+    }
+  }
 `;
 
-const SideBar = ({children, className}) => (
+const SideBar = ({children, className, list}) => (
   <Root
     className={className}
   >
     {children}
+    <div className="list-container">
+      {list}
+    </div>
   </Root>
 );
 

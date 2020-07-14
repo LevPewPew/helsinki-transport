@@ -1,10 +1,10 @@
-type Marker {
+type PlaceHolderIgnore {
   lat: Number,
   lng: Number
 }
 
 type Query {
-  routeMarkers: [Marker]
+  routeStops: [PlaceHolderIgnore]
 }
 
 # TODO i am sure since i am using direct writes that everything

@@ -2,7 +2,7 @@ import typeDefs from './type-defs.graphql'
 import { resolvers } from './resolvers';
 import {
   getAllAlerts,
-  getAllRouteMarkers,
+  getRouteStops,
   getAllRoutes,
   getAllTicketTypes,
   getModalDisplayed,
@@ -11,7 +11,7 @@ import {
 
 const queries = {
   getAllAlerts,
-  getAllRouteMarkers,
+  getRouteStops,
   getAllRoutes,
   getAllTicketTypes,
   getModalDisplayed,

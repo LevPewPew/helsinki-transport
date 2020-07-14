@@ -1,6 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useApolloClient, useQuery } from '@apollo/react-hooks';
-import { AlertsList, Footer, Header, Helsinki, Modal, RoutesList, SideBar, SideBarBtn, TicketTypesList } from 'components';
+import {
+  AlertsList,
+  Footer,
+  Header,
+  Helsinki,
+  Modal,
+  RoutesList,
+  SideBar,
+  SideBarBtn,
+  StopsList,
+  TicketTypesList
+} from 'components';
 import { FaRoute, FaTicketAlt } from 'react-icons/fa';
 import { MdAnnouncement } from 'react-icons/md';
 import styled from 'styled-components';
@@ -19,7 +30,7 @@ const Root = styled.div`
   main {
     width: 100%;
     display: flex;
-    flex-grow: 2;
+    flex-grow: 1;
     position: relative;
 
     .map-modal-container {
@@ -63,7 +74,7 @@ const ModalSC = styled(Modal)`
 function App() {
   const [ modalList, setModalList ] = useState('');
   const client = useApolloClient();
-  const { data } = useQuery(queries.getAllRouteMarkers);
+  const { data } = useQuery(queries.getRouteStops);
 
   const displayAlertsModal = () => {
     setModalList(<AlertsList />);
@@ -83,7 +94,13 @@ function App() {
   return (
     <Root>
       <main>
-        <SideBar>
+        <SideBar
+          list={
+            <StopsList
+              stops={data.routeStops}
+            />
+          }
+        >
           <SideBarBtn
             handleClick={displayAlertsModal}
             icon={<MdAnnouncement />}
@@ -105,7 +122,7 @@ function App() {
         </SideBar>
         <div className="map-modal-container">
           <HelsinkiSC
-            routeMarkers={data.routeMarkers}
+            routeStops={data.routeStops}
           >
             <HeaderSC />
             <FooterSC />

@@ -21,12 +21,6 @@ const bluePushpinIcon = new Leaflet.Icon({
   iconAnchor: [20, 62]
 });
 
-const purplePushpinIcon = new Leaflet.Icon({
-  iconUrl: 'https://maps.google.com/mapfiles/kml/pushpin/purple-pushpin.png',
-  iconSize: [64, 64],
-  iconAnchor: [20, 62]
-});
-
 // NOTE: must be a Class component,
 // react-leaflet refuses to work as a functional component. i don't know why.
 //
@@ -53,8 +47,8 @@ class Helsinki extends React.Component {
   };
 
   componentDidUpdate(nextProps) {
-    if (nextProps.routeMarkers[0] !== this.props.routeMarkers[0]) {
-      this.setState({ center: this.props.routeMarkers[0] });
+    if (nextProps.routeStops[0] !== this.props.routeStops[0]) {
+      this.setState({ center: this.props.routeStops[0] });
     }
   }
 
@@ -81,11 +75,11 @@ class Helsinki extends React.Component {
             </Popup>
           </Marker>
         ))}
-        {this.props.routeMarkers.map((marker, i) => (
+        {this.props.routeStops.map((stop, i) => (
           <Marker
             icon={bluePushpinIcon}
             key={`routeMarker${i}`}
-            position={[marker.lat, marker.lng]}
+            position={[stop.lat, stop.lng]}
           >
             <Popup>
               <span>Popup!!! move this so it starts at better spot on the pin graphic</span>

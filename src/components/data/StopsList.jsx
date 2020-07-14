@@ -10,7 +10,7 @@ const Root = styled.ul`
 
 const StopsList = ({ stops }) => (
   <Root>
-    {stops.map((item, i) => (
+    {stops?.map((item, i) => (
       <StopItem
         item={item}
         key={`StopItem${i}`}

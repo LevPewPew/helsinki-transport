@@ -2,7 +2,7 @@ import React from 'react';
 
 const StopItem = ({ item }) => (
   <li>
-    <p>{item.name}</p>
+    <p>{item.code} - {item.name}</p>
   </li>
 );
 

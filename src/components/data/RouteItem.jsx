@@ -75,13 +75,16 @@ function RouteItem({ item }) {
   };
 
   useEffect(() => {
+    // TODO change this to !loading 
     if (data) {
-      const newRouteMarkers = data.stops.map((stop) => ({
-        __typename: "Marker",
+      const newRouteStops = data.stops.map((stop) => ({
+        __typename: "RouteStop",
         lat: stop.lat,
-        lng: stop.lon
+        lng: stop.lon,
+        code: stop.code,
+        name: stop.name
       }));
-      client.writeData({ data: { routeMarkers: newRouteMarkers } });
+      client.writeData({ data: { routeStops: newRouteStops } });
       client.writeData({ data: { modalDisplayed: false } });
     }
   }, [data]);

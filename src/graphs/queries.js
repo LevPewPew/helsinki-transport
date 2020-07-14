@@ -18,11 +18,13 @@ const getAllAlerts = gql`
   }
 `;
 
-const getAllRouteMarkers = gql`
+const getRouteStops = gql`
   query {
-    routeMarkers @client {
-      lat,
+    routeStops @client {
+      lat
       lng
+      code
+      name
     }
   }
 `;
@@ -35,6 +37,7 @@ const getAllRoutes = gql`
       mode
       stops {
         gtfsId
+        code
         name
       }
     }
@@ -64,13 +67,14 @@ const getStops = gql`
       lat
       lon
       code
+      name
     }
   }
 `;
 
 export {
   getAllAlerts,
-  getAllRouteMarkers,
+  getRouteStops,
   getAllRoutes,
   getAllTicketTypes,
   getModalDisplayed,
