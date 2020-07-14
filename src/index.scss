@@ -29,7 +29,14 @@ html {
   }
 };
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+p, span {
+  font-size: 1rem;
 }

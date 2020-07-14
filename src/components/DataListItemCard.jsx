@@ -6,7 +6,7 @@ const Root = styled.div`
   width: 100%;
   padding: 2rem;
   border-bottom: 1px solid ${COLORS.POP};
-`
+`;
 
 const DataListItemCard = ({ children }) => (
   <Root>

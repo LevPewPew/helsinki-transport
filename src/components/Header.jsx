@@ -12,7 +12,6 @@ const Root = styled.header`
     opacity: 20%;
     
     h1 {
-      font-size: ${FONT_SIZES.MONSTER};
       color: ${COLORS.TEXT_PRIMARY};
     }
 

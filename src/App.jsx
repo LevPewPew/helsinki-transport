@@ -15,7 +15,7 @@ import {
 import { FaRoute, FaTicketAlt } from 'react-icons/fa';
 import { MdAnnouncement } from 'react-icons/md';
 import styled from 'styled-components';
-import { COLORS } from 'styles';
+import { COLORS, FONT_SIZES } from 'styles';
 import { queries } from 'graphs';
 
 const Root = styled.div`
@@ -72,21 +72,25 @@ const ModalSC = styled(Modal)`
 // leaflet map package uses "lat","lng",
 // but HSL graphql schema uses "lat", "lon"
 function App() {
-  const [ modalList, setModalList ] = useState('');
+  const [ modalList, setModalList ] = useState(null);
+  const [ modalTitle, setModalTitle ] = useState(null);
   const client = useApolloClient();
   const { data } = useQuery(queries.getRouteStops);
 
   const displayAlertsModal = () => {
+    setModalTitle("Alerts");
     setModalList(<AlertsList />);
     client.writeData({ data: { modalDisplayed: true } })
   };
 
   const displayRoutesModal = () => {
+    setModalTitle("Routes");
     setModalList(<RoutesList />);
     client.writeData({ data: { modalDisplayed: true } })
   };
 
   const displayTicketTypesModal = () => {
+    setModalTitle("Tickets");
     setModalList(<TicketTypesList />);
     client.writeData({ data: { modalDisplayed: true } })
   };
@@ -127,7 +131,9 @@ function App() {
             <HeaderSC />
             <FooterSC />
           </HelsinkiSC>
-          <ModalSC>
+          <ModalSC
+            title={modalTitle}
+          >
             {modalList}
           </ModalSC>
         </div>

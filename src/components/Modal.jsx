@@ -15,16 +15,22 @@ const Root = styled.div`
   flex-direction: column;
   background-color: ${COLORS.MAIN};
 
-  .button-container {
+  .title-button-container {
+    padding: 0.5rem;
     display: flex;
-    position: absolute;
-    right: 0;
-    top: 0;
+    justify-content: space-between;
+    align-items: center;
+
+    h2 {
+      margin-left: 2rem;
+    }
 
     button {
       padding: 0.5rem;
       border: none;
-      margin-left: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       font-size: ${FONT_SIZES.ULTRA};
       background-color: transparent;
       outline: 0;
@@ -35,11 +41,27 @@ const Root = styled.div`
   .children-container {
     height: 100%;
     padding: 2.5rem 0;
+    margin-left: 11px;
     overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+      position: absolute;
+    }
+
+    &::-webkit-scrollbar:vertical {
+      width: 11px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      border: 2px solid ${COLORS.MAIN};
+      background-color: rgba(0, 0, 0, 0.5);
+    }
   }
 `;
 
-const Modal = ({ children, className }) => {
+const Modal = ({ children, className, title }) => {
   const client = useApolloClient();
   const { data } = useQuery(queries.getModalDisplayed);
 
@@ -48,7 +70,8 @@ const Modal = ({ children, className }) => {
       className={className}
       style={{display: data.modalDisplayed ? 'flex' : 'none'}}
     >
-      <div className="button-container">
+      <div className="title-button-container">
+        <h2>{title}</h2>
         <button type="button" onClick={() => client.writeData({ data: { modalDisplayed: false } })}><MdClose /></button>
       </div>
       <div className="children-container">
