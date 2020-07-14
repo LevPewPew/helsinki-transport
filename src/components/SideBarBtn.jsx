@@ -8,7 +8,7 @@ const Root = styled.button`
   display: flex;
   position: relative;
   align-items: center;
-  background-color: ${COLORS.BUTTON_SECONDARY};
+  background-color: ${COLORS.MAIN};
   cursor: pointer;
 
   &:focus {

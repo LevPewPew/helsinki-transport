@@ -2,7 +2,10 @@ import React from 'react';
 
 const AlertItem = ({ item }) => (
   <li>
-    <p><strong>{item.route?.shortName}, {item.route?.longName}</strong></p>
+    {
+      item.route?.shortName && item.route?.longName &&
+      <p><strong>{item.route?.shortName}, {item.route?.longName}</strong></p>
+    }
     <p>{item.alertSeverityLevel} Severity Alert: {item.alertEffect} due to {item.alertCause}</p>
     <p>{item.alertHeaderText}</p>
     <p>{item.alertDescriptionText}</p>

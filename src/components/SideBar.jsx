@@ -5,7 +5,7 @@ import { COLORS } from 'styles';
 const Root = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: ${COLORS.BUTTON_SECONDARY};
+  background-color: ${COLORS.MAIN};
 
   .list-container {
     flex-grow: 1;
@@ -19,6 +19,20 @@ const Root = styled.div`
       right: 0;
       bottom: 0;
       overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        -webkit-appearance: none;
+      }
+
+      &::-webkit-scrollbar:vertical {
+        width: 11px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 8px;
+        border: 2px solid ${COLORS.MAIN};
+        background-color: rgba(0, 0, 0, .5);
+      }
     }
   }
 `;
