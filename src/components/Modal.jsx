@@ -34,22 +34,8 @@ const Root = styled.div`
 
   .children-container {
     height: 100%;
-    padding: 2.5rem;
+    padding: 2.5rem 0;
     overflow-y: scroll;
-
-    &::-webkit-scrollbar {
-      -webkit-appearance: none;
-    }
-
-    &::-webkit-scrollbar:vertical {
-      width: 11px;
-    }
-
-    &::-webkit-scrollbar-thumb {
-      border-radius: 8px;
-      border: 2px solid ${COLORS.MAIN};
-      background-color: rgba(0, 0, 0, .5);
-    }
   }
 `;
 

@@ -1,5 +1,6 @@
 import AlertItem from './data/AlertItem';
 import AlertsList from './data/AlertsList';
+import DataListItemCard from './DataListItemCard';
 import Footer from './Footer';
 import Header from './Header';
 import Helsinki from './Helsinki';
@@ -16,6 +17,7 @@ import TicketTypesList from './data/TicketTypesList';
 export {
   AlertItem,
   AlertsList,
+  DataListItemCard,
   Footer,
   Header,
   Helsinki,

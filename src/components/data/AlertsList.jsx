@@ -1,6 +1,6 @@
 import React from 'react';
 import { useQuery } from '@apollo/react-hooks';
-import { AlertItem } from 'components';
+import { AlertItem, DataListItemCard } from 'components';
 import GridLoader from 'react-spinners/GridLoader';
 import { queries } from 'graphs';
 import styled from 'styled-components';
@@ -33,10 +33,12 @@ function AlertsList() {
         />
       </div>
       {data?.alerts.map((item, i) => (
-        <AlertItem
-          item={item}
-          key={`AlertItem${i}`}
-        />
+        <DataListItemCard>
+          <AlertItem
+            item={item}
+            key={`AlertItem${i}`}
+          />
+        </DataListItemCard>
       ))}
     </Root>
   );
