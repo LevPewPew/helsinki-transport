@@ -27,7 +27,9 @@ const Root = styled.li`
       }
 
       .icon {
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
       }
 
     }
@@ -35,7 +37,7 @@ const Root = styled.li`
     .g {
       display: grid;
       grid-template-rows: 1fr 1fr;
-      grid-template-columns: 1fr 4fr 1fr 1fr;
+      grid-template-columns: 0.5fr 4fr 0.5fr 1fr;
 
       .g1 {
         grid-row: 1 / 2;
@@ -67,7 +69,7 @@ const Root = styled.li`
 
 function RouteItem({ item }) {
   const client = useApolloClient();
-  const [ lazyGetStops, { loading, error, data } ] = useLazyQuery(queries.getStops);
+  const [ lazyGetStops, { data } ] = useLazyQuery(queries.getStops);
 
   const viewJourney = () => {
     const stopIds = item.stops.map((stop) => stop.gtfsId);
@@ -75,7 +77,6 @@ function RouteItem({ item }) {
   };
 
   useEffect(() => {
-    // TODO change this to !loading 
     if (data) {
       const newRouteStops = data.stops.map((stop) => ({
         __typename: "RouteStop",
@@ -103,7 +104,6 @@ function RouteItem({ item }) {
             stops={item.stops}
           />
       </details>
-      <div></div>
     </Root>
   );
 };
