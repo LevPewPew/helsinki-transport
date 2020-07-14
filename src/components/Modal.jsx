@@ -13,6 +13,25 @@ const Root = styled.div`
   display: flex;
   flex-direction: column;
   background-color: ${COLORS.MAIN};
+
+  .children-container {
+    padding: 2rem;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+      -webkit-appearance: none;
+    }
+
+    &::-webkit-scrollbar:vertical {
+      width: 11px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 8px;
+      border: 2px solid ${COLORS.MAIN};
+      background-color: rgba(0, 0, 0, .5);
+    }
+  }
 `;
 
 const Modal = ({ children, className }) => {
@@ -25,7 +44,9 @@ const Modal = ({ children, className }) => {
       style={{display: data.modalDisplayed ? 'flex' : 'none'}}
     >
       <button type="button" onClick={() => client.writeData({ data: { modalDisplayed: false } })}>X</button>
-      {children}
+      <div className="children-container">
+        {children}
+      </div>
     </Root>
   );
 };
