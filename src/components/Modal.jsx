@@ -16,7 +16,7 @@ const Root = styled.div`
   background-color: ${COLORS.MAIN};
 
   .title-button-container {
-    padding: 0.5rem;
+    padding: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
