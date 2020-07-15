@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useApolloClient, useLazyQuery } from '@apollo/react-hooks';
 import { StopsList } from 'components';
 import { queries } from 'graphs';
 import { FaChevronDown } from 'react-icons/fa';
 import styled from 'styled-components';
-import { useEffect } from 'react';
 
 const Root = styled.li`
   details {

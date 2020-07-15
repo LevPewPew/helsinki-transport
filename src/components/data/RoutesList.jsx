@@ -20,7 +20,10 @@ function RoutesList() {
         loading={loading}
       >
         {data?.routes.map((item, i) => (
-          <DataListItemCard>
+          <DataListItemCard
+            // animate
+            index={i}
+          >
             <RouteItem
               item={item}
               key={`RouteItem${i}`}
