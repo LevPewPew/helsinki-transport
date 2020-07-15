@@ -30,6 +30,7 @@ const DataListItemCard = ({ animate, children }) => {
   return (
     <IsInView
       onChange={(check) => setIsInView(check)}
+      partialVisibility
     >
       <Root
         onClick={() => setDetailsOpen(!detailsOpen)}
