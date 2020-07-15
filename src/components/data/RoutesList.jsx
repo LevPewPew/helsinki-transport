@@ -21,8 +21,7 @@ function RoutesList() {
       >
         {data?.routes.map((item, i) => (
           <DataListItemCard
-            // animate
-            index={i}
+            animate
           >
             <RouteItem
               item={item}

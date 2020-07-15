@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useApolloClient, useLazyQuery } from '@apollo/react-hooks';
 import { StopsList } from 'components';
 import { queries } from 'graphs';
@@ -8,8 +8,6 @@ import styled from 'styled-components';
 const Root = styled.li`
   details {
     summary {
-      cursor: pointer;
-
       &::-webkit-details-marker {
         display: none;
       }
@@ -66,7 +64,7 @@ const Root = styled.li`
   }
 `;
 
-function RouteItem({ item }) {
+function RouteItem({ detailsOpen, item }) {
   const client = useApolloClient();
   const [ lazyGetStops, { data } ] = useLazyQuery(queries.getStops);
 
@@ -91,7 +89,7 @@ function RouteItem({ item }) {
 
   return (
     <Root>
-      <details>
+      <details open={detailsOpen}>
         <summary className="g">
           <p className="g1">{item.shortName}</p>
           <p className="g2">{item.longName}</p>
