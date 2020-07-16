@@ -49,6 +49,7 @@ class Helsinki extends React.Component {
   componentDidUpdate(nextProps) {
     if (nextProps.routeStops[0] !== this.props.routeStops[0]) {
       this.setState({ center: this.props.routeStops[0] });
+      this.setState({ zoom: 15 });
     }
   }
 
