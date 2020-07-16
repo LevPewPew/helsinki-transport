@@ -9,6 +9,12 @@
 @mixin bp($point) {
   @if $point == smallScreen {
     @media (max-width: 1200px) { @content; }
+  } @else if $point == tablet {
+    @media (max-width: 768px) { @content; }
+  } @else if $point == mobile {
+    @media (max-width: 520px) { @content; }
+  } @else if $point == smallMobile {
+    @media (max-width: 375px) { @content; }
   }
 }
 
@@ -28,6 +34,10 @@ html {
   @include bp(smallScreen) {
     font-size: calc(4px + 1vw);
   }
+
+  @include bp(tablet) {
+    font-size: calc(10px + 1vw);
+  }
 };
 
 h1 {
@@ -43,6 +53,7 @@ p, span {
 }
 
 h6 {
-  color: #dfecff
-
+  // TODO get rid of this
+  color: #dfecff;
+  list-style-type: none;
 }

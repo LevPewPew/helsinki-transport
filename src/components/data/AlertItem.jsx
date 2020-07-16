@@ -20,7 +20,7 @@ const Root = styled.li`
   .description-container {
     margin: 0.5rem 0;
   }
-`
+`;
 
 const AlertItem = ({ item }) => {
   let alertColor;

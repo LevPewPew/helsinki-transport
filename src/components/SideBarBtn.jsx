@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { COLORS, FONT_SIZES } from 'styles';
-  
+
 const Root = styled.button`
   padding: 1.25rem;
   border: none;

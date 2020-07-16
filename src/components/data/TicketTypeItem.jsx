@@ -1,14 +1,40 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const TicketTypeItem = ({ item }) => (
-  <li>
-    <p><strong>{item.fareId}</strong></p>
-    <p>{item.price} {item.currency}</p>
-    <p><em>Zones:</em></p>
-    <ul>
-      {item.zones.map((zone) => <li>{zone}</li>)}
-    </ul>
-  </li>
-);
+const Root = styled.li`
+  p {
+    margin: 0.5rem 0;
+  }
+`;
+
+const TicketTypeItem = ({ item }) => {
+  let currencySymbol;
+  switch(item.currency) {
+    case 'EUR':
+      currencySymbol = '&euro;';
+      break;
+    default:
+      currencySymbol = '$';
+  }
+
+  return (
+    <Root>
+      <p>
+        <span><strong>{item.fareId}</strong></span>
+        <span>&nbsp;-&nbsp;</span>
+        <span dangerouslySetInnerHTML={{__html: currencySymbol}}></span>
+        <span> {item.price}</span>
+      </p>
+      <p>
+        <em>Valid Zones: </em>
+        {item.zones.map((zone, i) => (
+          i !== item.zones.length - 1 ?
+          <span>{zone}, </span> :
+          <span>{zone}</span>
+        ))}
+      </p>
+    </Root>
+  );
+}
 
 export default TicketTypeItem;
