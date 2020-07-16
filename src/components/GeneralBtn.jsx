@@ -21,6 +21,14 @@ const Root = styled.button`
     outline: 0;
   }
 
+  &:hover {
+    span {
+      color: ${COLORS.POP};
+    }
+    /* TODO add hover indication for secondary buttons,
+    also animate the color change */
+  }
+
   span {
     display: flex;
     align-items: center;

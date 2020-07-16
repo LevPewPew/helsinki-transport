@@ -7,9 +7,9 @@ import IsInView from 'react-visibility-sensor';
 const Root = styled(animated.div)`
   width: 100%;
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid ${COLORS.POP};
+  border-bottom: 1px solid ${COLORS.SUBTLE_DETAILS};
   position: relative;
-  
+
   ${(props) => props.expandable && css`
     cursor: pointer;
   `}
@@ -35,7 +35,7 @@ const DataListItemCard = ({ animate, children }) => {
     >
       <Root
         onClick={() => setDetailsOpen(!detailsOpen)}
-        onMouseEnter={() => setSpring({ backgroundColor: COLORS.POP })}
+        onMouseEnter={() => setSpring({ backgroundColor: COLORS.SUBTLE_DETAILS })}
         onMouseLeave={() => setSpring({ backgroundColor: COLORS.MAIN })}
         // only providing animation if item is visible.
         // doing this is essential to not take a HUGE hit in performance
