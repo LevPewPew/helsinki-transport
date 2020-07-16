@@ -11,8 +11,9 @@ const Root = styled.div`
     flex-grow: 1;
     position: relative;
     overflow-y: hidden;
-
+    
     ul {
+      padding: 0.75rem;
       position: absolute;
       top: 0;
       left: 0;

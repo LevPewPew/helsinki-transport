@@ -3,6 +3,7 @@ import AlertsList from './data/AlertsList';
 import DataList from './DataList';
 import DataListItemCard from './DataListItemCard';
 import Footer from './Footer';
+import GeneralBtn from './GeneralBtn';
 import Header from './Header';
 import Helsinki from './Helsinki';
 import Modal from './Modal';
@@ -21,6 +22,7 @@ export {
   DataList,
   DataListItemCard,
   Footer,
+  GeneralBtn,
   Header,
   Helsinki,
   Modal,

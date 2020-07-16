@@ -27,11 +27,11 @@ const Root = styled.button`
   }
 `;
 
-const SideBarBtn = ({ handleClick, icon, text } ) => (
+const SideBarBtn = ({ children, handleClick, icon } ) => (
   <Root
     onClick={handleClick}
   >
-    <span>{text}</span><span className="icon">{icon}</span>
+    <span>{children}</span><span className="icon">{icon}</span>
   </Root>
 );
 

@@ -9,6 +9,7 @@ const Root = styled(animated.div)`
   padding: 1.5rem 2rem;
   border-bottom: 1px solid ${COLORS.POP};
   position: relative;
+  
   ${(props) => props.expandable && css`
     cursor: pointer;
   `}

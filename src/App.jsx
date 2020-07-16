@@ -109,20 +109,23 @@ function App() {
             handleClick={displayAlertsModal}
             icon={<MdAnnouncement />}
             key={'SideBarBtn-1'}
-            text={"Announcements"}
-          />
+          >
+            Announcements
+          </SideBarBtn>
           <SideBarBtn
             handleClick={displayRoutesModal}
             icon={<FaRoute />}
             key={'SideBarBtn-2'}
-            text={"Routes"}
-          />
+          >
+            Routes
+          </SideBarBtn>
           <SideBarBtn
             handleClick={displayTicketTypesModal}
             icon={<FaTicketAlt />}
             key={'SideBarBtn-3'}
-            text={"TicketTypes"}
-          />
+          >
+            TicketTypes
+          </SideBarBtn>
         </SideBar>
         <div className="map-modal-container">
           <HelsinkiSC

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useApolloClient, useLazyQuery } from '@apollo/react-hooks';
-import { StopsList } from 'components';
+import { GeneralBtn, StopsList } from 'components';
 import { queries } from 'graphs';
 import { FaChevronDown } from 'react-icons/fa';
 import styled from 'styled-components';
@@ -38,21 +38,34 @@ const Root = styled.li`
   .g {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 0.5fr 4fr 0.5fr 1fr;
+    grid-template-columns: 0.5fr 0.5fr 4fr 1fr;
 
+    /* these min-widths, and the container divs for the p tags, are essential to
+    override the minimum sizing alogirthm of a flex item. without it ellipses
+    overflow won't work */
     .g1 {
       grid-row: 1 / 2;
       grid-column: 1 / 2;
+      display: flex;
+      align-items: center;
+      min-width: 0;
     }
 
     .g2 {
       grid-row: 1 / 2;
       grid-column: 2 / 3;
+      display: flex;
+      align-items: center;
+      min-width: 0;
     }
 
     .g3 {
       grid-row: 1 / 2;
       grid-column: 3 / 4;
+      padding-right: 1rem;
+      display: flex;
+      align-items: center;
+      min-width: 0;
     }
 
     .g4 {
@@ -97,10 +110,22 @@ function RouteItem({ detailsOpen, item }) {
   return (
     <Root>
       <div className="summary g">
-        <p className="g1">{item.shortName}</p>
-        <p className="g2">{item.longName}</p>
-        <p className="g3">{item.mode}</p>
-        <button className="g4" type="button" onClick={() => viewJourney()}>View Journey</button>
+        <div className="g1">
+          <p>{item.shortName}</p>
+        </div>
+        <div className="g2">
+          <p>{item.mode}</p>
+        </div>
+        <div className="g3">
+          <p>{item.longName}</p>
+        </div>
+        <GeneralBtn
+          className="g4"
+          handleClick={() => viewJourney()}
+          primary
+        >
+          Pin Stops
+        </GeneralBtn>
         <p className="icon g5"><FaChevronDown /></p>
       </div>
       <div className="details" style={{display: detailsOpen ? 'initial' : 'none'}}>
