@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { COLORS, FONT_SIZES } from 'styles';
 
 const Root = styled.div`
-  width: 80vh;
+  width: 70%;
   height: 80vh;
   position: absolute;
   border: 1px solid grey;
