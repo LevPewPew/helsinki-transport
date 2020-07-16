@@ -70,22 +70,15 @@ class Helsinki extends React.Component {
           <Marker
             icon={redPushpinIcon}
             key={`userMarker${i}`}
-            position={[marker.lat, marker.lng]}>
-            <Popup>
-              <span>Popup!!! move this so it starts at better spot on the pin graphic</span>
-            </Popup>
-          </Marker>
+            position={[marker.lat, marker.lng]}
+          />
         ))}
         {this.props.routeStops.map((stop, i) => (
           <Marker
             icon={bluePushpinIcon}
             key={`routeMarker${i}`}
             position={[stop.lat, stop.lng]}
-          >
-            <Popup>
-              <span>Popup!!! move this so it starts at better spot on the pin graphic</span>
-            </Popup>
-          </Marker>
+          />
         ))}
         {this.props.children}
       </Root>
