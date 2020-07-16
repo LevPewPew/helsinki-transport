@@ -11,6 +11,11 @@ const Root = styled.button`
   background-color: ${COLORS.MAIN};
   cursor: pointer;
 
+  // TODO LEFTOFF go to sidebar preferably, but App if i have to, to manage who is selected
+  ${(props) => props.selected && css`
+    border-right: 3px solid red;
+  `}
+
   &:focus {
     outline: 0;
   }
@@ -27,8 +32,9 @@ const Root = styled.button`
   }
 `;
 
-const SideBarBtn = ({ children, handleClick, icon } ) => (
+const SideBarBtn = ({ selected, children, handleClick, icon }) => (
   <Root
+    selected={selected}
     onClick={handleClick}
   >
     <span>{children}</span><span className="icon">{icon}</span>
