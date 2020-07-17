@@ -1,9 +1,10 @@
-import React, { Children, cloneElement, isValidElement, useState } from 'react';
+import React, { Children, cloneElement, isValidElement, useState, useEffect } from 'react';
+import { useQuery } from '@apollo/react-hooks';
+import { queries } from 'graphs';
 import styled from 'styled-components';
 import { COLORS } from 'styles';
 
 const Root = styled.div`
-  width: calc(initial + 3px);
   display: flex;
   flex-direction: column;
   background-color: ${COLORS.MAIN};
@@ -41,6 +42,13 @@ const Root = styled.div`
 
 function SideBar({children, className, list}) {
   const [ selected, setSelected ] = useState(null);
+  const { data } = useQuery(queries.getModalDisplayed);
+
+  useEffect(() => {
+    if (!data.modalDisplayed) {
+      setSelected(null);
+    }
+  }, [data]);
 
   const childrenWithProps = Children.map(children, (child) => (
     isValidElement(child) ?

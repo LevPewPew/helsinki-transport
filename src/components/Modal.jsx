@@ -66,6 +66,10 @@ const Modal = ({ children, className, title }) => {
   const client = useApolloClient();
   const { data } = useQuery(queries.getModalDisplayed);
 
+  const handleClose = () => {
+    client.writeData({ data: { modalDisplayed: false } })
+  };
+
   return (
     <Root
       className={className}
@@ -73,7 +77,7 @@ const Modal = ({ children, className, title }) => {
     >
       <div className="title-button-container">
         <h2>{title}</h2>
-        <button type="button" onClick={() => client.writeData({ data: { modalDisplayed: false } })}><MdClose /></button>
+        <button type="button" onClick={handleClose}><MdClose /></button>
       </div>
       <div className="children-container">
         {children}
