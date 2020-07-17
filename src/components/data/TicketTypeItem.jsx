@@ -7,7 +7,7 @@ const Root = styled.li`
   }
 `;
 
-const TicketTypeItem = ({ item }) => {
+function TicketTypeItem({ item }) {
   let currencySymbol;
   switch(item.currency) {
     case 'EUR':

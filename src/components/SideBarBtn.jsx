@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { COLORS, FONT_SIZES } from 'styles';
 
 const Root = styled.button`
@@ -11,9 +11,15 @@ const Root = styled.button`
   background-color: ${COLORS.MAIN};
   cursor: pointer;
 
-  // TODO LEFTOFF go to sidebar preferably, but App if i have to, to manage who is selected
   ${(props) => props.selected && css`
-    border-right: 3px solid red;
+    border-right: 3px solid ${COLORS.SELECTED_DETAILS};
+  `}
+
+  /* can't figure out a way to make a border existing not extend the width of the
+  btn (i thought this is what box-sizing: border-box was for?) so using this
+  pattern instead. */
+  ${(props) => !props.selected && css`
+    border-right: 3px solid ${COLORS.MAIN};
   `}
 
   &:focus {
@@ -32,13 +38,21 @@ const Root = styled.button`
   }
 `;
 
-const SideBarBtn = ({ selected, children, handleClick, icon }) => (
-  <Root
-    selected={selected}
-    onClick={handleClick}
-  >
-    <span>{children}</span><span className="icon">{icon}</span>
-  </Root>
-);
+function SideBarBtn ({ selected, children, handleClick, icon, nth, setSelected }) {
+  const handleClickAndSelection = () => {
+    setSelected(nth);
+    handleClick();
+  };
+
+  return (
+    <Root
+      selected={selected === nth}
+      noneSelected={selected}
+      onClick={handleClickAndSelection}
+    >
+      <span>{children}</span><span className="icon">{icon}</span>
+    </Root>
+  );
+}
 
 export default SideBarBtn;

@@ -15,7 +15,7 @@ const Root = styled(animated.div)`
   `}
 `;
 
-const DataListItemCard = ({ animate, children }) => {
+function DataListItemCard({ animate, children }) {
   const [ detailsOpen, setDetailsOpen ] = useState(false);
   const [ { backgroundColor }, setSpring ] = useSpring(() => (
     { backgroundColor: COLORS.MAIN }

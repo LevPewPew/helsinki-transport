@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Children, cloneElement, isValidElement, useState } from 'react';
 import styled from 'styled-components';
 import { COLORS } from 'styles';
 
 const Root = styled.div`
+  width: calc(initial + 3px);
   display: flex;
   flex-direction: column;
   background-color: ${COLORS.MAIN};
@@ -38,15 +39,25 @@ const Root = styled.div`
   }
 `;
 
-const SideBar = ({children, className, list}) => (
-  <Root
-    className={className}
-  >
-    {children}
-    <div className="list-container">
-      {list}
-    </div>
-  </Root>
-);
+function SideBar({children, className, list}) {
+  const [ selected, setSelected ] = useState(null);
+
+  const childrenWithProps = Children.map(children, (child) => (
+    isValidElement(child) ?
+    cloneElement(child, { selected, setSelected }) :
+    child
+  ));
+
+  return (
+    <Root
+      className={className}
+    >
+      {childrenWithProps}
+      <div className="list-container">
+        {list}
+      </div>
+    </Root>
+  );
+};
 
 export default SideBar;

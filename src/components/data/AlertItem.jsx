@@ -22,7 +22,7 @@ const Root = styled.li`
   }
 `;
 
-const AlertItem = ({ item }) => {
+function AlertItem ({ item }) {
   let alertColor;
   switch(item.alertSeverityLevel) {
     case 'UNKNOWN_SEVERITY':

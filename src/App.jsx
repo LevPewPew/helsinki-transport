@@ -109,6 +109,7 @@ function App() {
             handleClick={displayAlertsModal}
             icon={<MdAnnouncement />}
             key={'SideBarBtn-1'}
+            nth={1}
           >
             Announcements
           </SideBarBtn>
@@ -116,6 +117,7 @@ function App() {
             handleClick={displayRoutesModal}
             icon={<FaRoute />}
             key={'SideBarBtn-2'}
+            nth={2}
           >
             Routes
           </SideBarBtn>
@@ -123,6 +125,7 @@ function App() {
             handleClick={displayTicketTypesModal}
             icon={<FaTicketAlt />}
             key={'SideBarBtn-3'}
+            nth={3}
           >
             TicketTypes
           </SideBarBtn>

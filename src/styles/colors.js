@@ -4,7 +4,7 @@ const COLORS = {
   MAIN: '#9dcbf7',
   POP: '#dfecff',
   SELECTED: 'white',
-  SELECTED_DETAILS: 'gray',
+  SELECTED_DETAILS: '#05152c',
   SUBTLE_DETAILS: '#aed5fa',
   TEXT_PRIMARY: '#9dcbf7',
   TEXT_SECONDARY: '#05152c'
