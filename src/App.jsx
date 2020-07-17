@@ -12,11 +12,12 @@ import {
   StopsList,
   TicketTypesList
 } from 'components';
+import { queries } from 'graphs';
 import { FaRoute, FaTicketAlt } from 'react-icons/fa';
 import { MdAnnouncement } from 'react-icons/md';
 import styled from 'styled-components';
-import { COLORS, FONT_SIZES } from 'styles';
-import { queries } from 'graphs';
+import { COLORS } from 'styles';
+import { respondTo } from 'styles';
 
 const Root = styled.div`
   width: 100%;
@@ -66,6 +67,17 @@ const HeaderSC = styled(Header)`
 const ModalSC = styled(Modal)`
   z-index: 2000;
   font-size: 24px;
+
+  ${respondTo.tablet`
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+  `}
 `;
 
 // NOTE on latitude and longitude:

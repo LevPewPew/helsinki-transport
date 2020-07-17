@@ -1,6 +1,7 @@
 import React from 'react';
 import GridLoader from 'react-spinners/GridLoader';
 import styled from 'styled-components';
+import { COLORS } from 'styles';
 
 const Root = styled.div`
   height: 100%;
@@ -19,7 +20,7 @@ const DataList = ({ children, error, loading }) => (
     <div className="spinner-container" style={{display: loading ? 'flex' : 'none'}}>
       <GridLoader
         size={50}
-        color={"gray"}
+        color={COLORS.SELECTED_DETAILS}
         loading={loading}
       />
     </div>

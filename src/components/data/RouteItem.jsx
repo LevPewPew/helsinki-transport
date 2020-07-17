@@ -48,7 +48,7 @@ const Root = styled.li`
       grid-column: 1 / 2;
       display: flex;
       align-items: center;
-      min-width: 0;
+      min-width: 30px;
     }
 
     .g2 {
@@ -56,7 +56,7 @@ const Root = styled.li`
       grid-column: 2 / 3;
       display: flex;
       align-items: center;
-      min-width: 0;
+      min-width: 30px;
     }
 
     .g3 {
