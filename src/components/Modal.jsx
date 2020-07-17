@@ -32,6 +32,7 @@ const Root = styled.div`
       justify-content: center;
       align-items: center;
       font-size: ${FONT_SIZES.ULTRA};
+      color: ${COLORS.TEXT_SECONDARY};
       background-color: transparent;
       outline: 0;
       cursor: pointer;

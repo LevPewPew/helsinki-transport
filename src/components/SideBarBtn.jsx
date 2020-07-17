@@ -12,14 +12,14 @@ const Root = styled.button`
   cursor: pointer;
 
   ${(props) => props.selected && css`
-    border-right: 3px solid ${COLORS.SELECTED_DETAILS};
+    border-right: 5px solid ${COLORS.SELECTED_DETAILS};
   `}
 
   /* can't figure out a way to make a border existing not extend the width of the
   btn (i thought this is what box-sizing: border-box was for?) so using this
   pattern instead. */
   ${(props) => !props.selected && css`
-    border-right: 3px solid ${COLORS.MAIN};
+    border-right: 5px solid ${COLORS.MAIN};
   `}
 
   &:focus {
@@ -30,6 +30,7 @@ const Root = styled.button`
     display: flex;
     align-items: center;
     font-size: ${FONT_SIZES.X_LARGE};
+    color: ${COLORS.TEXT_SECONDARY}
   }
 
   .icon {

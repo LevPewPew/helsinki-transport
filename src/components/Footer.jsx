@@ -10,7 +10,7 @@ const Root = styled.div`
   a {
     padding: 10px;
     text-decoration: none;
-    opacity: 50%;
+    opacity: 20%;
     
     span {
       font-size: ${FONT_SIZES.XX_LARGE};

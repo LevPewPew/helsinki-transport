@@ -29,7 +29,7 @@ body,
 
 html {
   font-size: 16px;
-  color: #05152c;
+  color: #9dcbf7;
 
   @include bp(smallScreen) {
     font-size: calc(4px + 1vw);
@@ -54,6 +54,6 @@ p, span {
 
 h6 {
   // TODO get rid of this
-  color: #1d4c77;
+  color: #0e3b79;
   list-style-type: none;
 }

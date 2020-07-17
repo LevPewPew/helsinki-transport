@@ -9,7 +9,7 @@ const Root = styled.li`
     align-items: center;
 
     svg {
-      margin: 0 0.25rem;
+      margin: 0 0.75rem 0 0;
     }
   }
   
@@ -26,10 +26,10 @@ function AlertItem ({ item }) {
   let alertColor;
   switch(item.alertSeverityLevel) {
     case 'UNKNOWN_SEVERITY':
-      alertColor = 'black';
+      alertColor = 'white';
       break;
     case 'INFO':
-      alertColor = 'black';
+      alertColor = 'white';
       break;
     case 'WARNING':
       alertColor = 'orange';
@@ -38,7 +38,7 @@ function AlertItem ({ item }) {
       alertColor = 'red';
       break;
     default:
-      alertColor = 'black';
+      alertColor = 'white';
   }
 
   const convertEpochToHumanTime = (epochTime) => {

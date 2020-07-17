@@ -9,7 +9,7 @@ const Root = styled.header`
 
   a {
     text-decoration: none;
-    opacity: 50%;
+    opacity: 20%;
     
     h1 {
       color: ${COLORS.TEXT_PRIMARY};
