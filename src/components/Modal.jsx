@@ -10,11 +10,12 @@ const Root = styled.div`
   width: 70%;
   height: 80vh;
   position: absolute;
-  border: 1px solid grey;
-  border-radius: 5px;
   display: flex;
   flex-direction: column;
   background-color: ${COLORS.MAIN};
+  -webkit-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  -moz-box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+  box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
 
   .title-button-container {
     padding: 1rem;
@@ -57,8 +58,8 @@ const Root = styled.div`
 
     &::-webkit-scrollbar-thumb {
       border-radius: 8px;
-      border: 2px solid ${COLORS.MAIN};
-      background-color: rgba(0, 0, 0, 0.5);
+      border: 2px solid ${COLORS.SUBTLE_DETAILS};
+      background-color: ${COLORS.POP};
     }
   }
 `;

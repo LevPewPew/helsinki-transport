@@ -63,8 +63,8 @@ const Root = styled(animated.div)`
 
       &::-webkit-scrollbar-thumb {
         border-radius: 8px;
-        border: 2px solid ${COLORS.MAIN};
-        background-color: rgba(0, 0, 0, .5);
+        border: 2px solid ${COLORS.SUBTLE_DETAILS};
+        background-color: ${COLORS.POP};
       }
     }
   }
