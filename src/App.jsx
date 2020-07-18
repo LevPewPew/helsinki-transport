@@ -29,16 +29,21 @@ const Root = styled.div`
 
   main {
     width: 100%;
-    display: flex;
     flex-grow: 1;
     position: relative;
+    display: flex;
 
     .map-modal-container {
+      flex-basis: calc(100vw - ${(props) => props.offset + 'px'});
       width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+
+      ${respondTo.tablet`
+        flex-basis: 100vw;
+      `}
     }
   }
 `;
@@ -78,6 +83,17 @@ const ModalSC = styled(Modal)`
   `}
 `;
 
+const SideBarOffset = styled.div`
+  background-color: ${COLORS.MAIN};;
+  height: 100%;
+  width: ${(props) => props.offset + 'px'};
+  flex-basis: auto;
+
+  ${respondTo.tablet`
+    width: 0px;
+  `}
+`;
+
 // NOTE on latitude and longitude:
 // leaflet map package uses "lat","lng",
 // but HSL graphql schema uses "lat", "lon"
@@ -86,6 +102,7 @@ function App() {
   const [ modalTitle, setModalTitle ] = useState(null);
   const client = useApolloClient();
   const { data } = useQuery(queries.getRouteStops);
+  const [ sideBarWidth, setSideBarWidth ] = useState(null);
 
   const displayAlertsModal = () => {
     setModalTitle("Alerts");
@@ -106,7 +123,7 @@ function App() {
   };
 
   return (
-    <Root>
+    <Root offset={sideBarWidth}>
       <main>
         <SideBar
           list={
@@ -114,6 +131,7 @@ function App() {
               stops={data.routeStops}
             />
           }
+          returnWidth={setSideBarWidth}
         >
           <SideBarBtn
             handleClick={displayAlertsModal}
@@ -140,6 +158,7 @@ function App() {
             TicketTypes
           </SideBarBtn>
         </SideBar>
+        <SideBarOffset offset={sideBarWidth}/>
         <div className="map-modal-container">
           <HelsinkiSC
             routeStops={data.routeStops}

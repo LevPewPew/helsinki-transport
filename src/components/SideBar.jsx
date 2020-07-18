@@ -70,7 +70,7 @@ const Root = styled(animated.div)`
   }
 `;
 
-function SideBar({children, className, list}) {
+function SideBar({children, className, list, returnWidth }) {
   const selfRef = useRef(null);
   const [ width, setWidth ] = useState(null);
   const [ expanded, setExpanded ] = useState(false);
@@ -99,6 +99,10 @@ function SideBar({children, className, list}) {
     setWidth(selfRef.current.offsetWidth);
     window.addEventListener('resize', () => setWidth(selfRef.current.offsetWidth));
   }, []);
+
+  useEffect(() => {
+    returnWidth(width);
+  }, [width]);
 
   const childrenWithProps = Children.map(children, (child) => (
     isValidElement(child) ?
