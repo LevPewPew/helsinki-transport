@@ -44,7 +44,7 @@ function AlertItem ({ item }) {
   const convertEpochToHumanTime = (epochTime) => {
     let d = new Date(0);
     d.setUTCSeconds(epochTime);
-    return d.toString();
+    return d.toLocaleString('en-GB', { timeZone: 'Europe/Helsinki' });
   };
 
   return (
