@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { COLORS, FONT_SIZES } from 'styles';
+import { COLORS } from 'styles';
 
 const Root = styled.header`
   display: flex;

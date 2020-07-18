@@ -1,4 +1,9 @@
-import React, { Children, cloneElement, isValidElement, useState } from 'react';
+import React, {
+  Children,
+  cloneElement,
+  isValidElement,
+  useState
+} from 'react';
 import styled, { css } from 'styled-components';
 import { COLORS } from 'styles';
 import { animated, useSpring } from 'react-spring';
@@ -7,7 +12,7 @@ import IsInView from 'react-visibility-sensor';
 const Root = styled(animated.div)`
   width: 100%;
   padding: 1.5rem 2rem;
-  border-bottom: 1px solid ${COLORS.SUBTLE_DETAILS};
+  border-bottom: 3px solid ${COLORS.SUBTLE_DETAILS};
   position: relative;
 
   ${(props) => props.expandable && css`

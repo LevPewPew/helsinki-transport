@@ -4,11 +4,13 @@ import React, {
   isValidElement,
   useEffect,
   useState,
-  useRef } from 'react';
+  useRef
+} from 'react';
+import { FiMenu } from 'react-icons/fi';
 import { useQuery } from '@apollo/react-hooks';
 import { queries } from 'graphs';
-import styled, { css } from 'styled-components';
-import { breakpoints, COLORS, respondTo } from 'styles';
+import styled from 'styled-components';
+import { COLORS, FONT_SIZES } from 'styles';
 import { animated, useSpring } from 'react-spring';
 
 const Root = styled(animated.div)`
@@ -19,13 +21,16 @@ const Root = styled(animated.div)`
   height: 100vh;
   position: absolute;
   top: 0px;
-  left: ${(props) => props.slideOffset + 'px'};
+  left: ${(props) => props.offset + 'px'};
 
   .expand-tag {
-    // LEFT OFF make the tag actually look good, get a icon...
     width: 50px;
     height: 50px;
-    background-color: orange;
+    background-color: ${COLORS.MAIN};
+    font-size: ${FONT_SIZES.XXX_LARGE};
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 1501;
     position: absolute;
     right: 0px;
@@ -67,21 +72,33 @@ const Root = styled(animated.div)`
 
 function SideBar({children, className, list}) {
   const selfRef = useRef(null);
-  const [ width, setWidth ] = useState(null)
+  const [ width, setWidth ] = useState(null);
+  const [ expanded, setExpanded ] = useState(false);
   const [ selected, setSelected ] = useState(null);
   const { data } = useQuery(queries.getModalDisplayed);
   const [ { x }, setSpring ] = useSpring(() => (
     { x: 0 }
   ));
 
-  useEffect(() => {
-    setWidth(selfRef.current.offsetWidth);
-    window.addEventListener('resize', () => setWidth(selfRef.current.offsetWidth));
+  const handleExpandTagClick = () => {
+    if (expanded) {
+      setSpring({ x: 0 });
+    } else {
+      setSpring({ x: width - 1 });
+    }
+    setExpanded(!expanded);
+  };
 
+  useEffect(() => {
     if (!data.modalDisplayed) {
       setSelected(null);
     }
-  }, [data, selfRef.current]);
+  }, [data]);
+
+  useEffect(() => {
+    setWidth(selfRef.current.offsetWidth);
+    window.addEventListener('resize', () => setWidth(selfRef.current.offsetWidth));
+  }, []);
 
   const childrenWithProps = Children.map(children, (child) => (
     isValidElement(child) ?
@@ -92,14 +109,18 @@ function SideBar({children, className, list}) {
   return (
     <Root
       className={className}
-      onMouseEnter={() => setSpring({ x: window.innerWidth <= 768 ? width - 5 : 0 })}
+      onMouseEnter={() => setSpring({ x: window.innerWidth <= 768 ? width - 1 : 0 })}
       onMouseLeave={() => setSpring({ x: 0 })}
       ref={selfRef}
-      slideOffset={window.innerWidth <= 768 ? -width + 5 : 0}
+      offset={window.innerWidth <= 768 ? 1 - width : 0}
       style={{ transform: x.interpolate((a) => `translateX(${a}px)`) } }
     >
-      <div className="expand-tag">
-        <span>X</span>
+      <div
+        className="expand-tag"
+        onClick={handleExpandTagClick}
+        style={{ display: window.innerWidth <= 768 ? 'flex' : 'none' }}
+      >
+        <FiMenu />
       </div>
       {childrenWithProps}
       <div className="list-container">

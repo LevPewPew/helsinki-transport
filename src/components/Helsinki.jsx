@@ -1,6 +1,6 @@
 import React from 'react';
 import Leaflet from 'leaflet';
-import { Map, TileLayer, Marker, Popup } from 'react-leaflet';
+import { Map, TileLayer, Marker } from 'react-leaflet';
 import styled from 'styled-components';
 import 'leaflet/dist/leaflet.css';
 
