@@ -16,8 +16,7 @@ import { queries } from 'graphs';
 import { FaRoute, FaTicketAlt } from 'react-icons/fa';
 import { MdAnnouncement } from 'react-icons/md';
 import styled from 'styled-components';
-import { COLORS } from 'styles';
-import { respondTo } from 'styles';
+import { COLORS, respondTo } from 'styles';
 
 const Root = styled.div`
   width: 100%;
@@ -65,7 +64,6 @@ const HeaderSC = styled(Header)`
 `;
 
 const ModalSC = styled(Modal)`
-  z-index: 2000;
   font-size: 24px;
 
   ${respondTo.tablet`

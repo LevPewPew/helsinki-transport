@@ -34,7 +34,7 @@ const Root = styled.button`
   }
 
   .icon {
-    margin-left: 1.0rem;
+    margin-right: 1.0rem;
     font-size: ${FONT_SIZES.X_LARGE};
   }
 `;
@@ -51,7 +51,7 @@ function SideBarBtn ({ selected, children, handleClick, icon, nth, setSelected }
       noneSelected={selected}
       onClick={handleClickAndSelection}
     >
-      <span>{children}</span><span className="icon">{icon}</span>
+      <span className="icon">{icon}</span><span>{children}</span>
     </Root>
   );
 }

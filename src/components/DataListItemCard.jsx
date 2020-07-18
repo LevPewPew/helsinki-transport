@@ -1,7 +1,7 @@
 import React, { Children, cloneElement, isValidElement, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { COLORS } from 'styles';
-import { useSpring, animated } from 'react-spring';
+import { animated, useSpring } from 'react-spring';
 import IsInView from 'react-visibility-sensor';
 
 const Root = styled(animated.div)`
