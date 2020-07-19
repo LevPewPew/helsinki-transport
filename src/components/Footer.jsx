@@ -26,13 +26,13 @@ const Root = styled.div`
 
 const Footer = ({className}) => (
   <Root className={className}>
-    <a href="https://twitter.com/LevPewPew">
+    <a href="https://twitter.com/LevPewPew" target="_blank">
       <span>By Lev</span>
     </a>
-    <a href="https://www.linkedin.com/in/levente-toth-42009b187/">
+    <a href="https://www.linkedin.com/in/levente-toth-42009b187/" target="_blank">
       <span>LinkedIn</span>
     </a>
-    <a href="https://github.com/">
+    <a href="https://github.com/" target="_blank">
       <span>GitHub</span>
     </a>
   </Root>

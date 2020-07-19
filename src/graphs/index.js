@@ -1,5 +1,3 @@
-import typeDefs from './type-defs.graphql'
-import { resolvers } from './resolvers';
 import {
   getAllAlerts,
   getRouteStops,
@@ -19,7 +17,5 @@ const queries = {
 };
 
 export {
-  queries,
-  resolvers,
-  typeDefs
+  queries
 };

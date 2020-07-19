@@ -26,7 +26,7 @@ const Header = ({className}) => (
   <Root
     className={className}
   >
-    <a href="https://digitransit.fi/en/developers/">
+    <a href="https://digitransit.fi/en/developers/apis/1-routing-api/1-graphiql/" target="_blank">
       <h1>Helsinki Transport</h1>
     </a>
   </Root>
