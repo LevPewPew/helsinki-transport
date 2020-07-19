@@ -8,5 +8,4 @@ type Query {
 }
 
 # TODO i am sure since i am using direct writes that everything
-# in here doesn't actually do anything. lol dumb tutorial....
-# TODO change this stuff to use mutations/resolves, leave here for now.
+# in here doesn't actually do anything. i blame bad tutorial.... lolol

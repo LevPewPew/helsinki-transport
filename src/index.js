@@ -14,7 +14,7 @@ const cache = new InMemoryCache();
 const client = new ApolloClient({
   cache,
   uri: GRAPHQL_API_URL,
-  typeDefs,
+  // typeDefs,
   resolvers
 });
 
