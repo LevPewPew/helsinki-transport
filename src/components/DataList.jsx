@@ -15,21 +15,31 @@ const Root = styled.div`
   }
 `;
 
-const DataList = ({ children, error, loading }) => (
-  <Root>
-    <div className="spinner-container" style={{display: loading ? 'flex' : 'none'}}>
-      <GridLoader
-        size={50}
-        color={COLORS.SELECTED_DETAILS}
-        loading={loading}
-      />
-    </div>
-    {
-      error ?
-      <div>Data Query Error: {error}</div> :
-      children
-    }
-  </Root>
-);
+const DataList = ({ children, query, animate }) => {
+  const { loading, error, data } = useQuery(query);
+
+  return (
+    <Root>
+      <div className="spinner-container" style={{display: loading ? 'flex' : 'none'}}>
+        <GridLoader
+          size={50}
+          color={COLORS.SELECTED_DETAILS}
+          loading={loading}
+        />
+      </div>
+      {
+        error ?
+        <div>Data Query Error: {error}</div> :
+        <>
+          {data?.alerts.map((item) => (
+            <DataListItemCard animate={animate}>
+              {children}
+            </DataListItemCard>
+          ))}
+        </>
+      }
+    </Root>
+  )
+};
 
 export default DataList;
